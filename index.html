@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>鹿巫女ちゃんの開運おみくじ</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+
+    <!-- ============================== -->
+    <!-- 秋のスタート画面 -->
+    <!-- ============================== -->
+
+    <section id="start-section" class="card">
+
+     <img
+  src="images/images-start-omikuji.png"
+  alt="鹿巫女ちゃんのおみくじ"
+  class="start-image"
+>
+
+      <button id="startButton" type="button">
+        🔮 おみくじ占いへ
+      </button>
+
+    </section>
+
+
+    <!-- ============================== -->
+    <!-- おみくじ入力画面 -->
+    <!-- ============================== -->
+
+    <section id="omikuji-section" class="card hidden">
+
+      <h1>
+        ⛩ 鹿巫女ちゃんの<br>
+        開運おみくじ ⛩
+      </h1>
+
+      <p class="description">
+        おみくじ箱から棒を1本引いて、<br>
+        棒に書かれた番号を入力してね！
+      </p>
+
+      <img
+        src="images/normal.png"
+        alt="鹿巫女ちゃん"
+        class="character normal-character"
+      >
+
+      <div class="input-area">
+
+        <p class="number-guide">
+          おみくじ棒の番号を選んでね！
+        </p>
+
+        <div
+          id="numberButtons"
+          class="number-buttons"
+        ></div>
+
+        <p
+          id="selectedNumber"
+          class="selected-number"
+        >
+          番号を選択してください
+        </p>
+
+        <button
+          id="fortuneButton"
+          type="button"
+        >
+          🔮 この番号で占う！
+        </button>
+
+      </div>
+
+      <p
+        id="errorMessage"
+        class="error-message"
+      ></p>
+
+    </section>
+
+
+    <!-- ============================== -->
+    <!-- 運気診断中画面 -->
+    <!-- ============================== -->
+
+    <section
+      id="loading-section"
+      class="card hidden"
+    >
+
+      <h2>🔮 運気診断中… 🔮</h2>
+
+      <img
+        src="images/fortune-loading.png"
+        alt="占い中の鹿巫女ちゃん"
+        class="character loading-character"
+      >
+
+      <p
+        id="loadingMessage"
+        class="loading-text"
+      >
+        運気を確認中…
+      </p>
+
+      <div class="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </section>
+
+
+    <!-- ============================== -->
+    <!-- 結果画面 -->
+    <!-- ============================== -->
+
+    <section
+      id="result-section"
+      class="card hidden"
+    >
+
+      <h2 id="fortuneTitle"></h2>
+
+      <img
+        id="fortuneImage"
+        src=""
+        alt="鹿巫女ちゃん"
+        class="character fortune-character"
+      >
+
+      <div class="fortune-box">
+
+        <p id="fortuneMessage"></p>
+
+      </div>
+
+
+      <div id="special-recommend" class="special-recommend hidden">
+
+  <img
+    id="specialRecommendImage"
+    src=""
+    alt="鹿巫女ちゃんの特殊おすすめ"
+  >
+
+  <p id="specialRecommendMessage"></p>
+
+</div>
+      <div class="recommend-box">
+
+        <h3>
+          🎰 鹿巫女ちゃんのおすすめ 🎰
+        </h3>
+
+        <p>
+          <span class="label">
+            遊技タイプ：
+          </span>
+
+          <span id="recommendType"></span>
+        </p>
+
+        <p>
+          <span class="label">
+            ジャンル：
+          </span>
+
+          <span id="recommendGenre"></span>
+        </p>
+
+        <p>
+          <span class="label">
+            メーカー：
+          </span>
+
+          <span id="recommendMaker"></span>
+        </p>
+        <!-- 特殊版画像 -->
+<div id="specialImageBox" class="special-image-box hidden">
+
+  <img
+    id="specialImage"
+    src=""
+    alt="特殊演出"
+    class="special-image"
+  >
+
+</div>
+
+      </div>
+
+
+      <p class="shop-message">
+        気になる台を店内で探してみよう！
+      </p>
+
+    </section>
+
+
+    <!-- ============================== -->
+    <!-- 24時間ロック画面 -->
+    <!-- ============================== -->
+
+    <section
+      id="lock-section"
+      class="card hidden"
+    >
+
+      <h2>🎋 おみくじは終了！</h2>
+
+      <img
+        src="images/normal.png"
+        alt="鹿巫女ちゃん"
+        class="character lock-character"
+      >
+
+      <p class="description">
+        鹿巫女ちゃんは<br>
+        次のおみくじを準備中です…
+      </p>
+
+      <div class="timer-box">
+
+        <p>次に引けるまで</p>
+
+        <div id="countdown">
+          計算中...
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>

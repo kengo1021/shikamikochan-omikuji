@@ -1,0 +1,1059 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff7f7 0%,
+      #fffdf8 100%
+    );
+
+  color: #333;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+
+  border-radius: 24px;
+
+  padding: 25px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+h1 {
+  margin-top: 0;
+
+  font-size: 28px;
+
+  color: #b11f3b;
+
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 36px;
+
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  color: #b11f3b;
+}
+
+h3 {
+  margin-top: 0;
+
+  color: #b11f3b;
+}
+
+.description {
+  line-height: 1.8;
+
+  font-size: 16px;
+}
+
+.character {
+  display: block;
+
+  width: 100%;
+
+  max-width: 330px;
+
+  margin: 20px auto;
+}
+
+.normal-character {
+  max-height: 420px;
+
+  object-fit: contain;
+}
+
+.fortune-character {
+  max-height: 450px;
+
+  object-fit: contain;
+}
+
+.input-area {
+  margin-top: 25px;
+}
+
+.input-area label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+
+  padding: 15px;
+
+  font-size: 20px;
+
+  text-align: center;
+
+  border:
+    2px solid #d8a3a3;
+
+  border-radius: 12px;
+
+  outline: none;
+}
+
+input:focus {
+  border-color: #b11f3b;
+}
+
+button {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 16px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #b11f3b;
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+.error-message {
+  color: #d00000;
+
+  font-weight: bold;
+
+  min-height: 24px;
+}
+
+.fortune-box {
+  margin-top: 20px;
+
+  padding: 20px;
+
+  background: #fff7e8;
+
+  border-radius: 16px;
+
+  font-size: 18px;
+
+  line-height: 1.8;
+}
+
+.recommend-box {
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background: #f7f7f7;
+
+  border-radius: 16px;
+
+  text-align: left;
+}
+
+.recommend-box p {
+  line-height: 1.8;
+}
+
+.label {
+  font-weight: bold;
+
+  color: #b11f3b;
+}
+
+.shop-message {
+  margin-top: 25px;
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  color: #b11f3b;
+}
+
+.timer-box {
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background: #f7f0f0;
+
+  border-radius: 16px;
+}
+
+#countdown {
+  margin-top: 10px;
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  color: #b11f3b;
+}
+
+@media screen and (max-width: 480px) {
+
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+}
+/* =========================
+   運気診断中
+========================= */
+
+.loading-character {
+  max-height: 350px;
+
+  object-fit: contain;
+
+  animation: floatCharacter 1s ease-in-out infinite;
+}
+
+@keyframes floatCharacter {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+
+.loading-text {
+  font-size: 18px;
+
+  font-weight: bold;
+
+  line-height: 1.8;
+
+  margin-top: 20px;
+}
+
+
+.loading-dots {
+  margin-top: 20px;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 10px;
+}
+
+
+.loading-dots span {
+
+  width: 12px;
+  height: 12px;
+
+  background: #b11f3b;
+
+  border-radius: 50%;
+
+  animation: loadingDots 1.2s infinite;
+}
+
+
+.loading-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+
+.loading-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+
+@keyframes loadingDots {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+
+  30% {
+    transform: translateY(-12px);
+    opacity: 1;
+  }
+
+}
+/* ==========================
+   結果画面 登場アニメーション
+========================== */
+
+#result-section {
+  animation: resultAppear 0.5s ease-out;
+}
+
+
+@keyframes resultAppear {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+/* ==========================
+   結果キャラ 登場演出
+========================== */
+
+.fortune-character {
+
+  animation: characterAppear 0.7s ease-out;
+
+}
+
+
+@keyframes characterAppear {
+
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+/* ==========================
+   最超吉 特殊演出
+========================== */
+
+.saichokichi-effect {
+  position: relative;
+overflow: hidden;
+
+  animation:
+    saichokichiAppear 0.6s ease-out,
+    saichokichiGlow 1s ease-in-out infinite alternate;
+
+  box-shadow:
+    0 0 20px gold,
+    0 0 40px gold,
+    0 0 80px rgba(255, 215, 0, 0.8);
+
+}
+
+
+/* 登場時にド派手に拡大 */
+
+@keyframes saichokichiAppear {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotate(-5deg);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.15) rotate(2deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+}
+
+
+/* 金色に光り続ける */
+
+@keyframes saichokichiGlow {
+
+  0% {
+
+    filter:
+      brightness(1)
+      drop-shadow(0 0 5px gold);
+
+    box-shadow:
+      0 0 20px gold,
+      0 0 40px rgba(255, 215, 0, 0.6);
+
+  }
+
+
+  100% {
+
+    filter:
+      brightness(1.4)
+      drop-shadow(0 0 20px gold);
+
+    box-shadow:
+      0 0 40px gold,
+      0 0 80px gold,
+      0 0 120px rgba(255, 215, 0, 0.8);
+
+  }
+
+}
+/* ==========================
+   最超吉 キラキラ強化
+========================== */
+
+.saichokichi-effect::before,
+.saichokichi-effect::after {
+
+  content: "✨ ✦ ✨ ✧ 🌟 ✦ ✨";
+
+  position: absolute;
+
+  left: 0;
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 28px;
+
+  pointer-events: none;
+
+  animation: sparkleMove 1.5s ease-in-out infinite;
+
+}
+
+
+.saichokichi-effect::before {
+
+  top: 10px;
+
+}
+
+
+.saichokichi-effect::after {
+
+  bottom: 10px;
+
+  animation-delay: 0.7s;
+
+}
+
+
+/* キラキラが伸び縮み */
+
+@keyframes sparkleMove {
+
+  0% {
+
+    opacity: 0.3;
+
+    transform: scale(0.8);
+
+  }
+
+
+  50% {
+
+    opacity: 1;
+
+    transform: scale(1.2);
+
+  }
+
+
+  100% {
+
+    opacity: 0.3;
+
+    transform: scale(0.8);
+
+  }
+
+}
+/* ==========================
+   おみくじ番号ボタン
+========================== */
+
+.number-guide {
+
+  font-size: 18px;
+  font-weight: bold;
+
+  margin-bottom: 15px;
+
+}
+
+
+/* 番号一覧 */
+
+.number-buttons {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  gap: 8px;
+
+  margin-bottom: 15px;
+
+}
+
+
+/* 番号ボタン */
+
+.number-button {
+
+  padding: 12px 5px;
+
+  border: 2px solid #999;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  background: #dddddd;
+
+  color: #222;
+
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.15s,
+    background 0.15s,
+    box-shadow 0.15s;
+
+}
+
+
+.number-button:active {
+
+  transform: scale(0.9);
+
+}
+
+
+/* 選択された番号 */
+
+.number-button.selected {
+
+  background: #ffc107;
+
+  border: 2px solid #e09100;
+
+  color: #222;
+
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 8px rgba(255, 193, 7, 0.9),
+    0 3px 6px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* 選択中表示 */
+
+.selected-number {
+
+  font-size: 18px;
+
+  font-weight: bold;
+
+  margin:
+
+    15px 0;
+
+}
+/* ======================================
+   秋・スタート画面
+   ゲームのデモ画面風
+   ====================================== */
+
+/* スタート画面全体 */
+#start-section {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* 秋のメイン画像 */
+#start-section .start-image {
+  display: block;
+
+  /* PCで大きくなりすぎないようにする */
+  width: 100%;
+  max-width: 760px;
+
+  /* 高さが大きくなりすぎないようにする */
+  max-height: 65vh;
+
+  /* 中央配置 */
+  margin: 0 auto;
+
+  /* 画像の比率を維持 */
+  height: auto;
+
+  object-fit: contain;
+
+  /* 少しだけゲーム画面っぽく */
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ======================================
+   タイトル部分
+   ====================================== */
+
+#start-section h1 {
+  margin-bottom: 10px;
+
+  text-shadow:
+    2px 2px 0 #ffffff,
+    0 3px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ======================================
+   スタートボタン
+   ====================================== */
+
+#start-section #startButton {
+  display: block;
+
+  width: min(80%, 420px);
+
+  margin: 22px auto 10px;
+
+  padding: 16px 24px;
+
+  font-size: 1.25rem;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 999px;
+
+  cursor: pointer;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e6a52f 0%,
+      #c87918 100%
+    );
+
+  box-shadow:
+    0 5px 0 #8c5310,
+    0 8px 15px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+
+/* 押す瞬間 */
+#start-section #startButton:active {
+  transform: translateY(4px);
+
+  box-shadow:
+    0 1px 0 #8c5310,
+    0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ======================================
+   スタートボタン周辺の演出
+   ====================================== */
+
+#start-section::before {
+  content: "⛩  鹿巫女ちゃんの開運おみくじ  ⛩";
+
+  display: block;
+
+  margin-bottom: 14px;
+
+  font-size: 1.15rem;
+  font-weight: bold;
+
+  color: #7b3f20;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* ======================================
+   PC用
+   ====================================== */
+
+@media (min-width: 768px) {
+
+  #start-section {
+    padding: 24px 30px 30px;
+  }
+
+  #start-section .start-image {
+    max-width: 760px;
+    max-height: 620px;
+  }
+
+}
+
+
+/* ======================================
+   スマホ用
+   ====================================== */
+
+@media (max-width: 767px) {
+
+  #start-section {
+    padding: 12px 10px 24px;
+  }
+
+  #start-section .start-image {
+    width: 100%;
+    max-width: 100%;
+
+    max-height: none;
+
+    border-radius: 12px;
+  }
+
+  #start-section::before {
+    font-size: 1rem;
+  }
+
+  #start-section #startButton {
+    width: 88%;
+
+    font-size: 1.15rem;
+
+    padding: 15px 20px;
+  }
+
+}
+/* ======================================
+   おみくじ番号選択画面
+   タイトル・説明文
+   ====================================== */
+
+
+/* メインタイトル */
+#omikuji-section h1 {
+  position: relative;
+
+  margin: 5px auto 18px;
+
+  padding: 14px 10px 16px;
+
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+
+  font-weight: 900;
+
+  line-height: 1.35;
+
+  letter-spacing: 0.08em;
+
+  color: #6b321d;
+
+  text-align: center;
+
+  text-shadow:
+    1px 1px 0 #ffffff,
+    2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* タイトルの上下に和風の飾り線 */
+#omikuji-section h1::before,
+#omikuji-section h1::after {
+  content: "✦";
+
+  display: block;
+
+  font-size: 0.75rem;
+
+  color: #c58a32;
+
+  letter-spacing: 0.3em;
+}
+
+
+/* 説明文 */
+#omikuji-section .description {
+  margin: 0 auto 20px;
+
+  padding: 12px 18px;
+
+  max-width: 520px;
+
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+
+  line-height: 1.8;
+
+  font-weight: 600;
+
+  color: #5f5149;
+
+  text-align: center;
+
+  background: rgba(255, 248, 235, 0.75);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+/* 番号選択の案内 */
+#omikuji-section .number-guide {
+  margin: 20px auto 12px;
+
+  font-size: 1.05rem;
+
+  font-weight: 800;
+
+  color: #6b321d;
+
+  text-align: center;
+}
+
+
+/* 選択番号表示 */
+#omikuji-section .selected-number {
+  margin: 16px auto;
+
+  min-height: 24px;
+
+  font-size: 1.05rem;
+
+  font-weight: bold;
+
+  color: #8b5a2b;
+
+  text-align: center;
+}
+
+
+/* ======================================
+   スマホ用
+   ====================================== */
+
+@media (max-width: 767px) {
+
+  #omikuji-section h1 {
+    margin-top: 0;
+
+    padding-top: 8px;
+
+    letter-spacing: 0.05em;
+  }
+
+  #omikuji-section .description {
+    padding: 10px 14px;
+
+    margin-bottom: 16px;
+  }
+
+}
+/* ======================================
+   おみくじタイトル 強化版
+   ====================================== */
+
+#omikuji-section h1 {
+  position: relative;
+
+  margin: 8px auto 20px;
+  padding: 18px 12px 20px;
+
+  font-size: clamp(1.9rem, 6vw, 2.7rem);
+
+  font-weight: 900;
+  line-height: 1.3;
+
+  letter-spacing: 0.08em;
+
+  color: #8b3f1f;
+
+  /* 白フチ＋影でタイトル感を強化 */
+  text-shadow:
+    2px 2px 0 #fffaf0,
+    -2px -2px 0 #fffaf0,
+    2px -2px 0 #fffaf0,
+    -2px 2px 0 #fffaf0,
+    0 4px 8px rgba(80, 35, 10, 0.25);
+
+  /* タイトルを少し浮かせる */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 248, 225, 0.95),
+      rgba(255, 238, 196, 0.75)
+    );
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 4px 12px rgba(90, 45, 15, 0.15),
+    inset 0 0 0 2px rgba(197, 138, 50, 0.35);
+}
+
+
+/* 上下の飾り */
+#omikuji-section h1::before {
+  content: "⛩  ✦  鹿巫女ちゃん  ✦  ⛩";
+
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: clamp(0.7rem, 2.5vw, 0.95rem);
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+
+  color: #c58a32;
+
+  text-shadow:
+    1px 1px 0 #fff;
+}
+
+
+#omikuji-section h1::after {
+  content: "━━━ ✦ ━━━";
+
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 0.8rem;
+
+  letter-spacing: 0.15em;
+
+  color: #c58a32;
+
+  text-shadow: none;
+}
+/* ==============================
+   特殊おすすめ画像
+   ============================== */
+
+.special-recommend {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.special-recommend img {
+  display: block;
+  width: min(85%, 420px);
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+}
+
+.special-recommend p {
+  margin: 8px 0 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+/* ==============================
+   特殊版画像
+   ============================== */
+
+.special-image-box {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.special-image {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
