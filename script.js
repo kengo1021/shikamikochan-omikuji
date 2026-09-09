@@ -50,14 +50,28 @@ const fortuneImage =
 const fortuneMessage =
   document.getElementById("fortuneMessage");
 
+  const numberImageBox =
+  document.getElementById("number-image-box");
+
+const numberFortuneImage =
+  document.getElementById("numberFortuneImage");
+
+const numberFortuneMessage =
+  document.getElementById("numberFortuneMessage");
+
 const recommendType =
   document.getElementById("recommendType");
 
 const recommendGenre =
   document.getElementById("recommendGenre");
 
-const recommendMaker =
-  document.getElementById("recommendMaker");
+const maker1Stars = document.getElementById("maker1Stars");
+const maker1Name = document.getElementById("maker1Name");
+
+const maker2Stars = document.getElementById("maker2Stars");
+const maker2Name = document.getElementById("maker2Name");
+const maker1Row = document.getElementById("maker1Row");
+const maker2Row = document.getElementById("maker2Row");
 
   const specialImageBox =
   document.getElementById("specialImageBox");
@@ -253,311 +267,455 @@ const fortuneData = {
 // ==============================
 
 const numberData = {
-
   1: {
-    type: "今日は店内をゆっくり見て回ろう",
-    genre: "メダル機",
-    maker: "うっすら光が差している場所がある…かも？"
+    type: "演出を楽しむタイプ",
+    genre: "王道・演出重視",
+    maker1: "ビスティ",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   2: {
-    type: "安定感のある定番タイプ",
-    genre: "Aタイプ",
-    maker: "いつものお気に入りメーカー"
+    type: "展開を楽しむタイプ",
+    genre: "王道・演出重視",
+    maker1: "ビスティ",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 4
   },
 
   3: {
-    type: "ここからの大逆転を狙う",
-    genre: "スマスロ",
-    maker: "一撃に期待できるメーカー"
+    type: "一発逆転を狙うタイプ",
+    genre: "逆転・勝負系",
+    maker1: "―",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   4: {
-    type: "自分の直感を信じる",
-    genre: "スマスロ",
-    maker: "気になったメーカー"
+    type: "のんびり楽しむタイプ",
+    genre: "ゆったり・海系",
+    maker1: "三洋物産",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   5: {
-    type: "気軽に楽しむ",
-    genre: "Aタイプ",
-    maker: "定番メーカー以外もチェック"
+    type: "展開を楽しむタイプ",
+    genre: "チャンス重視",
+    maker1: "大都技研",
+    maker1Stars: 5,
+    maker2: "藤商事",
+    maker2Stars: 3
   },
 
   6: {
-    type: "慎重にスタート",
-    genre: "メダル機",
-    maker: "昔からあるメーカー"
+    type: "気軽に楽しむタイプ",
+    genre: "シンプル・告知系",
+    maker1: "北電子",
+    maker1Stars: 5,
+    maker2: "SANKYO",
+    maker2Stars: 3
   },
 
-   7: {
-    type: "気軽に楽しめる定番タイプ",
-    genre: "Aタイプ",
-    maker: "光る瞬間を楽しもう！",
+  7: {
+    type: "気軽に楽しむタイプ",
+    genre: "シンプル・告知系",
+    maker1: "北電子",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   8: {
-    type: "新しい発見を探す",
-    genre: "マイナー機種",
-    maker: "普段選ばないメーカー"
+    type: "のんびり楽しむタイプ",
+    genre: "ゆったり・海系",
+    maker1: "三洋物産",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   9: {
-    type: "自分の右手と直感を信じる",
-    genre: "人気スマスロ",
-    maker: "今日は右手が疼くかも……",
+    type: "展開を楽しむタイプ",
+    genre: "能力・右手系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   10: {
-    type: "無理せず遊ぶ",
-    genre: "Aタイプ",
-    maker: "安心できるメーカー"
+    type: "無理せず楽しむタイプ",
+    genre: "波のあるタイプ",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   11: {
-    type: "今日はメダルの感触を楽しむ",
-    genre: "メダル機",
-    maker: "老舗メーカー"
+    type: "演出を楽しむタイプ",
+    genre: "チャンス・能力系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   12: {
-    type: "少し変わった台に挑戦",
-    genre: "マイナー機種",
-    maker: "普段あまり選ばないメーカー"
+    type: "流れを楽しむタイプ",
+    genre: "スピード感重視",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "SANKYO",
+    maker2Stars: 3
   },
 
- 13: {
-    type: "食欲も運気も大盛りで！",
-    genre: "人気スマスロ",
-    maker: "今日は思い切って大盛りに挑戦！？",
+  13: {
+    type: "勢い重視タイプ",
+    genre: "バトル・挑戦系",
+    maker1: "山佐",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   14: {
-    type: "今日は慎重派で",
-    genre: "好きなジャンル",
-    maker: "いつものメーカー"
+    type: "無理せず楽しむタイプ",
+    genre: "バトル・挑戦系",
+    maker1: "山佐",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   15: {
-    type: "まだまだここから",
-    genre: "メダル機",
-    maker: "何かが光る場所を探してみる…？"
+    type: "展開を楽しむタイプ",
+    genre: "ファンタジー系",
+    maker1: "大都技研",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   16: {
-    type: "新しい流れを作る",
-    genre: "最新台",
-    maker: "まずは新台コーナーをチェック"
+    type: "演出を楽しむタイプ",
+    genre: "魔法・ファンタジー系",
+    maker1: "メーシー",
+    maker1Stars: 5,
+    maker2: "SANKYO",
+    maker2Stars: 3
   },
 
   17: {
     type: "遊びやすさ重視",
-    genre: "Aタイプ",
-    maker: "定番メーカー"
+    genre: "漢気・勝負系",
+    maker1: "大都技研",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
-   18: {
-    type: "気合いを入れて挑戦！",
-    genre: "人気スマスロ",
-    maker: "まずは気合いのひと声！「押忍！」",
+  18: {
+    type: "勢い重視タイプ",
+    genre: "漢気・バトル系",
+    maker1: "大都技研",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
-19: {
-  type: "いつもと違う選択",
-  genre: "マイナー機種",
-  maker: "今日はどうしても譲れないものがあるかも……",
-  
-},
+  19: {
+    type: "本能で楽しむタイプ",
+    genre: "怪獣・バトル系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
+  },
 
   20: {
-    type: "休憩しながらゆっくり",
-    genre: "メダル機",
-    maker: "安心感のあるメーカー"
+    type: "ゆっくり楽しむタイプ",
+    genre: "レース・勝負系",
+    maker1: "山佐",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   21: {
-    type: "気楽に遊技",
-    genre: "Aタイプ",
-    maker: "淡い光の気配を探してみよう…"
+    type: "演出を楽しむタイプ",
+    genre: "電撃・能力系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   22: {
-    type: "今日は逆転の発想",
-    genre: "スマスロ",
-    maker: "意外なメーカー"
+    type: "一発逆転を狙うタイプ",
+    genre: "バトル・勝負系",
+    maker1: "サミー",
+    maker1Stars: 5,
+    maker2: "大都技研",
+    maker2Stars: 3
   },
 
-   23: {
-    type: "心のままに楽しむ",
-    genre: "人気スマスロ",
-    maker: "今日はココロがとまらない……！",
+  23: {
+    type: "勢い重視タイプ",
+    genre: "レース・スピード系",
+    maker1: "山佐",
+    maker1Stars: 5,
+    maker2: "SANKYO",
+    maker2Stars: 3
   },
-
 
   24: {
-    type: "自分の好きなスタイル",
-    genre: "メダル機",
-    maker: "気になるメーカー"
+    type: "展開を楽しむタイプ",
+    genre: "能力・電撃系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   25: {
-    type: "ちょっと冒険",
-    genre: "マイナー機種",
-    maker: "普段触らないメーカー"
+    type: "勢い重視タイプ",
+    genre: "戦国・乙女系",
+    maker1: "平和",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   26: {
-    type: "慎重に楽しむ",
-    genre: "Aタイプ",
-    maker: "安心できるメーカー"
+    type: "無理せず楽しむタイプ",
+    genre: "魔法・ファンタジー系",
+    maker1: "メーシー",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
- 27: {
-  type: "流れに乗る",
-  genre: "スマスロ",
-  maker: "今日は何だかワクワクが止まらない！",
-  
-},
+  27: {
+    type: "展開を楽しむタイプ",
+    genre: "能力・バトル系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
+  },
 
   28: {
-    type: "新しい発見",
-    genre: "メダル機",
-    maker: "隠れた名機を探してみよう"
+    type: "演出を楽しむタイプ",
+    genre: "怪獣・バトル系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
-   29: {
-    type: "今日は少し強気に！",
-    genre: "人気スマスロ",
-    maker: "強敵との出会いに縁がありそう……",
+  29: {
+    type: "勢い重視タイプ",
+    genre: "バトル・勝負系",
+    maker1: "サミー",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   30: {
-    type: "安定感重視",
-    genre: "Aタイプ",
-    maker: "定番メーカー"
+    type: "演出を楽しむタイプ",
+    genre: "激アツ・演出系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   31: {
-    type: "のんびり楽しむ",
-    genre: "メダル機",
-    maker: "いつものメーカー"
+    type: "のんびり楽しむタイプ",
+    genre: "待ち・保留系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   32: {
-    type: "気分転換",
-    genre: "マイナー機種",
-    maker: "新しいメーカーをチェック"
+    type: "展開を楽しむタイプ",
+    genre: "能力・電撃系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   33: {
-    type: "眠っている運気を探す",
-    genre: "Aタイプ",
-    maker: "淡い光が見える場所があるかも？"
+    type: "勢い重視タイプ",
+    genre: "戦国・バトル系",
+    maker1: "平和",
+    maker1Stars: 5,
+    maker2: "大都技研",
+    maker2Stars: 3
   },
 
   34: {
-    type: "王道で勝負",
-    genre: "人気スマスロ",
-    maker: "有名メーカー"
+    type: "ボタン演出を楽しむタイプ",
+    genre: "PUSH・演出系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "京楽",
+    maker2Stars: 3
   },
 
   35: {
-    type: "今日は無理せず",
-    genre: "好きなジャンル",
-    maker: "いつものメーカー"
+    type: "演出を楽しむタイプ",
+    genre: "激アツ・演出系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "藤商事",
+    maker2Stars: 3
   },
 
   36: {
-    type: "気になる新台をチェック",
-    genre: "最新台",
-    maker: "新しいメーカー"
+    type: "じっくり楽しむタイプ",
+    genre: "ハマり・粘り系",
+    maker1: "サミー",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   37: {
-    type: "小さな冒険",
-    genre: "マイナー機種",
-    maker: "知らなかったメーカー"
+    type: "直感重視タイプ",
+    genre: "台選び・運試し系",
+    maker1: "―",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 4
   },
 
   38: {
-  type: "今日は勢い重視",
-  genre: "スマスロ",
-  maker: "バトル系メーカー"
-},
+    type: "本能で楽しむタイプ",
+    genre: "バトル・サバイバル系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "藤商事",
+    maker2Stars: 3
+  },
 
-  
   39: {
-    type: "焦らずゆっくり",
-    genre: "メダル機",
-    maker: "安心感のあるメーカー"
+    type: "のんびり楽しむタイプ",
+    genre: "待ち・保留系",
+    maker1: "藤商事",
+    maker1Stars: 5,
+    maker2: "三洋物産",
+    maker2Stars: 3
   },
 
   40: {
-    type: "無理せず楽しむ",
-    genre: "好きなジャンル",
-    maker: "いつものメーカー"
+    type: "無理せず楽しむタイプ",
+    genre: "バトル・サバイバル系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   41: {
-    type: "直感で選ぶ",
-    genre: "スマスロ",
-    maker: "気になるメーカー"
+    type: "ボタン演出を楽しむタイプ",
+    genre: "PUSH・演出系",
+    maker1: "京楽",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   },
 
   42: {
-    type: "新しい楽しみ方",
-    genre: "Aタイプ",
-    maker: "いつもと違うメーカー"
+    type: "勢い重視タイプ",
+    genre: "レバー・操作系",
+    maker1: "ユニバーサル",
+    maker1Stars: 5,
+    maker2: "大都技研",
+    maker2Stars: 3
   },
 
   43: {
-    type: "慎重にスタート",
-    genre: "メダル機",
-    maker: "落ち着いたメーカー"
+    type: "タイミング重視タイプ",
+    genre: "目押し・リズム系",
+    maker1: "北電子",
+    maker1Stars: 5,
+    maker2: "山佐",
+    maker2Stars: 3
   },
 
   44: {
-    type: "まだ見つけていない台を探す",
-    genre: "マイナー機種",
-    maker: "隠れたメーカー"
+    type: "直感重視タイプ",
+    genre: "台選び・運試し系",
+    maker1: "―",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 4
   },
 
   45: {
-    type: "今日は自由に選んでOK！",
-    genre: "最新台・人気台",
-    maker: "鹿巫女ちゃんが全部おすすめ！"
+    type: "自由に楽しむタイプ",
+    genre: "なんでもアリ",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 5
   },
 
   46: {
-    type: "気楽に楽しむ",
-    genre: "Aタイプ",
-    maker: "定番メーカー"
+    type: "勢いを抑えて楽しむタイプ",
+    genre: "レバー・操作系",
+    maker1: "ユニバーサル",
+    maker1Stars: 5,
+    maker2: "山佐",
+    maker2Stars: 3
   },
 
   47: {
-    type: "今日は挑戦の日",
-    genre: "スマスロ",
-    maker: "普段選ばないメーカー"
+    type: "タイミング重視タイプ",
+    genre: "目押し・リズム系",
+    maker1: "北電子",
+    maker1Stars: 5,
+    maker2: "ユニバーサル",
+    maker2Stars: 3
   },
 
   48: {
-    type: "新台をチェック",
-    genre: "最新台",
-    maker: "話題のメーカー"
+    type: "じっくり楽しむタイプ",
+    genre: "ハマり・粘り系",
+    maker1: "サミー",
+    maker1Stars: 5,
+    maker2: "SANKYO",
+    maker2Stars: 3
   },
 
   49: {
-    type: "意外な一台を探す",
-    genre: "マイナー機種",
-    maker: "知らなかったメーカー"
+    type: "周りの勢いも楽しむタイプ",
+    genre: "連チャン・波系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "サミー",
+    maker2Stars: 3
   },
 
   50: {
-    type: "最後は自分の直感！",
-    genre: "好きなジャンル",
-    maker: "気になったメーカー"
+    type: "マイペース重視タイプ",
+    genre: "連チャン・波系",
+    maker1: "SANKYO",
+    maker1Stars: 5,
+    maker2: "平和",
+    maker2Stars: 3
   }
-
 };
 // ==============================
 // 特殊版画像
@@ -582,6 +740,275 @@ const specialImages = {
   38: "images/images-guspecial.png",
 
   45: "images/images-saichokichi-special.png"
+
+  };
+
+  // ==============================
+// 50番号ごとの通常イラスト
+// ==============================
+
+const fortuneImages = {
+
+  1: "images/エヴァ凶.png",
+  2: "images/エヴァ吉.png",
+  4: "images/海吉.png",
+  5: "images/リゼロ吉.png",
+  6: "images/ジャグラー凶.png",
+  7: "images/ジャグラー吉.png",
+  8: "images/海凶.png",
+  9: "images/とある（パチ）吉.png",
+  10: "images/とある（パチ）凶.png",
+
+  11: "images/レールガン吉.png",
+  12: "images/アクセラレータ吉.png",
+  13: "images/ゴッドイーター吉.png",
+  14: "images/ゴッドイーター凶.png",
+  15: "images/リゼロ凶.png",
+  16: "images/魔法少女吉.png",
+  17: "images/番長凶.png",
+  18: "images/番長吉.png",
+  19: "images/怪獣・バトル吉.png",
+  20: "images/モンキー凶.png",
+
+  21: "images/レールガン凶.png",
+  22: "images/北斗凶.png",
+  23: "images/モンキー吉.png",
+  24: "images/アクセラレータ凶.png",
+  25: "images/戦国乙女吉.png",
+  26: "images/魔法少女凶.png",
+  27: "images/とある（スマスロ）吉.png",
+  28: "images/怪獣・バトル凶.png",
+  29: "images/北斗吉.png",
+  30: "images/激アツ演出吉.png",
+  31: "images/保留・演出待ち吉.png",
+  32: "images/とある（スマスロ）凶.png",
+  33: "images/戦国乙女凶.png",
+  34: "images/PUSHボタン吉.png",
+  35: "images/激アツ演出凶.png",
+  36: "images/ハマり吉.png",
+  37: "images/台選び吉.png",
+  38: "images/東京喰種吉.png",
+  39: "images/保留・演出待ち凶.png",
+  40: "images/東京喰種凶.png",
+
+  41: "images/PUSHボタン凶.png",
+  42: "images/レバーON吉.png",
+  43: "images/目押し凶.png",
+  44: "images/台選び凶.png",
+  45: "images/最超吉.png",
+  46: "images/レバーON凶.png",
+  47: "images/目押し吉.png",
+  48: "images/ハマり吉.png",
+  49: "images/隣が爆連吉.png",
+  50: "images/隣が爆連凶.png"
+
+
+};
+// ==============================
+// 50番号ごとのコメント
+// ==============================
+
+const fortuneMessages = {
+
+  1:
+    "🧹 今日はちょっとしたトラブルに注意！<br>" +
+    "身の回りのものが突然「暴走」するかも……！？",
+
+  2:
+    "✨ 今日は神がかった流れが来ているかも！？<br>" +
+    "思い切った行動が、思わぬラッキーにつながりそう！",
+
+  3:
+    "💀 運気も燃え尽きた……。<br>" +
+    "でも、ここまで下がったなら、あとは上昇するだけだから……っ！",
+
+  4:
+    "🌊 今日はゆったり構えるのが吉！<br>" +
+    "果報は寝て待て！？<br>" +
+    "焦らず楽しんでいれば、思わぬチャンスがやってくるかも！？",
+
+  5:
+    "✨ 小さなチャンスを見逃さないで！<br>" +
+    "今日はいつもより少しだけ大胆にいってみよう！",
+
+  6:
+    "😱 なんだか嫌な夢を見そうな予感……。<br>" +
+    "今日は無理せず、のんびり楽しむのが吉かも！？",
+
+  7:
+    "🎉 今日はかなり期待できそう！<br>" +
+    "鹿巫女ちゃんも思わずテンションMAX！？",
+
+  8:
+    "☀️ 遊びすぎにはご用心！<br>" +
+    "今日は無理せず、休憩をはさみながら楽しもう！",
+
+  9:
+    "⚡ 今日は自分の右手と直感を信じてみよう！<br>" +
+    "思わぬ展開が待っているかも……！？",
+
+  10:
+    "😵 今日はちょっとした不幸に注意！<br>" +
+    "無理をすると「不幸だぁ～っ！」となるかも……。",
+
+  11:
+    "⚡ 鹿巫女ちゃんがあなたの運気を改竄！？<br>" +
+    "今日は悪い流れを吹き飛ばせそう！",
+
+  12:
+    "🚀 今日は運気も向上！<br>" +
+    "このまま一方通行で、良い流れに乗っていこう！",
+
+  13:
+    "🍖 今日は食欲も運気も大盛りで！<br>" +
+    "思い切って挑戦すれば、良い結果が待っているかも！？",
+
+  14:
+    "🍚 これは……ちょっと無理しすぎ！？<br>" +
+    "今日は欲張らず、自分のペースで楽しもう……！",
+
+  15:
+    "👹 今日はちょっと災難続きかも……。<br>" +
+    "でも大丈夫！鬼を乗り越えれば、流れは変わる！？",
+
+  16:
+    "✨ 奇跡も魔法もあるんです！<br>" +
+    "今日は思いがけないラッキーが起こるかも！？",
+
+  17:
+    "😭 漢気で負けた…いや、私女の子ですしっ！！",
+
+  18:
+    "🔥 今日は気合い十分！<br>" +
+    "「押忍！」のひと声で、運気も上向くかも！？",
+
+  19:
+    "🦖 今日は本能のままに楽しもう！<br>" +
+    "眠っていたパワーを解き放つチャンス！？",
+
+  20:
+    "😭 買いすぎ・欲張りには要注意……！<br>" +
+    "今日は一度落ち着いて、じっくり楽しもう。",
+
+  21:
+    "⚡ 静電気にも運気にも注意！？<br>" +
+    "今日は思わぬところで「ビリッ」とくるかも……。",
+
+  22:
+    "💥 まさかの「あべしっ！！」！？<br>" +
+    "今日は足元から身の回りまで、いつも以上に慎重に！",
+
+  23:
+    "🏁 今日はココロがとまらない！？<br>" +
+    "勢いに乗って楽しめば、良い流れがやってくるかも！",
+
+  24:
+    "🚃 あれ……その選択で大丈夫！？<br>" +
+    "今日は思わぬ方向に進んでしまうかも。",
+
+  25:
+    "🧹 強くて可愛い鹿巫女ちゃん！<br>" +
+    "今日は小さな厄も吹き飛ばして、スッキリ楽しもう！",
+
+  26:
+    "😢 勢いだけじゃダメ！<br>" +
+    "助六…安易は注意！！",
+
+  27:
+    "⚡ 今日はふざけた幻想をぶち壊す！？<br>" +
+    "悪い流れを自分の力で変えるチャンス！",
+
+  28:
+    "😨 今日は予想外の展開に注意！<br>" +
+    "思い通りにならなくても、焦らずいこう……！",
+
+  29:
+    "💥 今日は強敵との出会いに期待！<br>" +
+    "その出会いは一生ものになるかも！？",
+
+  30:
+    "🔥 これは……激アツの予感！？<br>" +
+    "今日はテンション高めで楽しんじゃおう！",
+
+  31:
+    "🔴 まだかな……そろそろ来るかな……？<br>" +
+    "焦らず待てば、思わぬ展開があるかも！？",
+
+  32:
+    "😭 今日は何をやっても空回り！？<br>" +
+    "「不幸だぁ～っ！」となる前に、いったん落ち着こう……。",
+
+  33:
+    "🔥 これが鹿浜の本能寺の変！？<br>" +
+    "今日は火の元と勢いの出しすぎに注意！",
+
+  34:
+    "🔴 押せば何かが起こるかも！？<br>" +
+    "今日は思い切って一歩踏み出してみよう！",
+
+  35:
+    "🔥 激アツ……なのは間違いない。<br>" +
+    "ただし今日は「熱すぎる」ものには要注意！？",
+
+  36:
+    "✨ あと少し、もってくれれば……！？<br>" +
+    "長い道の先には、まだ何かが待っているかも！",
+
+  37:
+    "🃏 その選択に神意が宿る！！<br>" +
+    "今日は直感を信じて選んでみよう！",
+
+  38:
+    "🥀 今日は自分の本能を信じて！<br>" +
+    "迷ったときこそ、心の声に従ってみよう。",
+
+  39:
+    "🔴 「……まだ？」<br>" +
+    "待てど暮らせど何も起こらない……今日は焦らず気長に！",
+
+  40:
+    "😭 上手くいかないときは悔しいもの……。<br>" +
+    "今日は無理に完璧を目指さず、楽しむことを忘れずに！",
+
+  41:
+    "🔴 押したらまさかの金ダライ！？<br>" +
+    "今日は何が起こるか分からない……慎重にいこう！",
+
+  42:
+    "🔥 レバーONッ!!<br>" +
+    "今日は思い切った一手が、良い流れを呼び込むかも！？",
+
+  43:
+    "😵 タイミングが……合わないッ！！<br>" +
+    "今日は焦らず、ゆっくりいきましょう……。",
+
+  44:
+    "🃏 ダメな時はどうしてもダメッ！！<br>" +
+    "今日は選択に迷ったら、いったん深呼吸！",
+
+  45:
+    "✨ 今日は神がかった1日に！？<br>" +
+    "何をやっても上手くいくかも！？",
+
+  46:
+    "😱 レバーONッ……のはずが「ポキッ」！？<br>" +
+    "今日は力の入れすぎにご注意を……！",
+
+  47:
+    "🎯 PERFECT！！<br>" +
+    "今日はタイミングばっちり！直感を信じて楽しもう！",
+
+  48:
+    "✨ 長い道のりも、あと少し！？<br>" +
+    "諦めずに楽しんでいれば、良い展開が待っているかも！",
+
+  49:
+    "🎉 隣がすごいことになってる！？<br>" +
+    "今日は周りの勢いにもあやかって、楽しくいこう！",
+
+  50:
+    "😭 隣が凄すぎてやれる気がしませんッ……！<br>" +
+    "今日は周りを気にしすぎず、自分のペースで楽しもう！"
 
 };
 
@@ -727,20 +1154,56 @@ function showFortune() {
   fortuneTitle.textContent =
     "【 " + fortune + " 】";
 
-  fortuneImage.src =
-    fortuneInfo.image;
+fortuneImage.src =
+  fortuneInfo.image;
 
-  fortuneMessage.innerHTML =
-    fortuneInfo.message;
+fortuneMessage.innerHTML =
+  fortuneInfo.message;
 
-  recommendType.textContent =
-    recommendInfo.type;
+  // ==============================
+// 番号別イラスト・コメント
+// ==============================
 
-  recommendGenre.textContent =
-    recommendInfo.genre;
+numberImageBox.classList.add("hidden");
+numberFortuneImage.src = "";
+numberFortuneMessage.innerHTML = "";
 
-  recommendMaker.textContent =
-    recommendInfo.maker;
+if (fortuneImages[number]) {
+
+  numberFortuneImage.src =
+    fortuneImages[number];
+
+  numberFortuneMessage.innerHTML =
+    fortuneMessages[number] || "";
+
+  numberImageBox.classList.remove("hidden");
+
+}
+
+  recommendType.textContent = recommendInfo.type;
+recommendGenre.textContent = recommendInfo.genre;
+
+// メーカー表示をリセット
+maker1Row.style.display = "";
+maker2Row.style.display = "";
+
+// メーカー情報を表示
+maker1Stars.textContent =
+  "★".repeat(recommendInfo.maker1Stars) +
+  "☆".repeat(5 - recommendInfo.maker1Stars);
+
+maker1Name.textContent = recommendInfo.maker1;
+
+maker2Stars.textContent =
+  "★".repeat(recommendInfo.maker2Stars) +
+  "☆".repeat(5 - recommendInfo.maker2Stars);
+
+maker2Name.textContent = recommendInfo.maker2;
+
+// 3番（最大凶）はメーカー1を表示しない
+if (number === 3) {
+  maker1Row.style.display = "none";
+}
 // ==============================
 // 特殊版画像
 // ==============================
