@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SWLWPWBSG5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-SWLWPWBSG5');
-</script>
-  <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
 
   <title>鹿巫女ちゃんの開運おみくじ</title>
 
@@ -88,7 +71,24 @@
 
         <button
           id="fortuneButton"
-          type="button"
+          type="button"<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SWLWPWBSG5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SWLWPWBSG5');
+</script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
         >
           🔮 この番号で占う！
         </button>
@@ -160,6 +160,25 @@
 
       </div>
 
+      <!-- ============================== -->
+<!-- 番号別イラスト -->
+<!-- ============================== -->
+
+<div id="number-image-box" class="number-image-box hidden">
+
+  <img
+    id="numberFortuneImage"
+    src=""
+    alt="番号別の鹿巫女ちゃん"
+    class="number-fortune-image"
+  >
+
+  <div class="number-fortune-box">
+    <p id="numberFortuneMessage"></p>
+  </div>
+
+</div>
+
 
       <div id="special-recommend" class="special-recommend hidden">
 
@@ -195,12 +214,24 @@
         </p>
 
         <p>
-          <span class="label">
-            メーカー：
-          </span>
+  <span class="label">
+    メーカー相性度：
+  </span>
+</p>
 
-          <span id="recommendMaker"></span>
-        </p>
+<div id="recommendMaker" class="maker-compatibility">
+
+  <p id="maker1Row">
+    <span id="maker1Stars" class="maker-stars"></span>
+    <span id="maker1Name"></span>
+  </p>
+
+  <p id="maker2Row">
+    <span id="maker2Stars" class="maker-stars"></span>
+    <span id="maker2Name"></span>
+  </p>
+
+</div>
         <!-- 特殊版画像 -->
 <div id="specialImageBox" class="special-image-box hidden">
 
