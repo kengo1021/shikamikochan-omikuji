@@ -1057,3 +1057,28 @@ overflow: hidden;
 .hidden {
   display: none !important;
 }
+/* ==============================
+   番号別イラスト
+   ============================== */
+
+.number-fortune-image {
+  width: 70%;
+  max-width: 320px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+}
+.maker-compatibility {
+  margin-top: 5px;
+}
+
+.maker-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.maker-stars {
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
